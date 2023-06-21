@@ -1,0 +1,54 @@
+//Fundação Centro de Análise, Pesquisa e Inovação Tecnológica FUCAPI
+//Curso: Engenharia de Software
+//Professor(a): Éricka Dilly
+//Aluno(a) 1: Herica Cristhyna dos Santos Viana
+//Aluno(a) 2: Graziela da Costa Mesquita
+//Aluno(a) 3: Caio Henrique Pereira Costa
+//Aluno(a) 4: Caroline 
+
+#include <stdio.h>
+#include <string.h>
+
+int solution(int A, int B) {
+	
+    char strA[11];
+    char strB[11];
+    sprintf(strA, "%ld", A);
+    sprintf(strB, "%ld", B);
+
+    int lenA = strlen(strA);
+    int lenB = strlen(strB);
+
+    for (int i = 0; i <= lenB - lenA; i++) {
+        int j;
+        for (j = 0; j < lenA; j++) {
+            if (strB[i + j] != strA[j]) {
+                break;
+            }
+        }
+        if (j == lenA) {
+            return i; 
+        }
+    }
+
+    return -1;
+}
+
+int main() {
+    int numA, numB;
+
+    printf("Digite o numero A: ");
+    scanf("%d", &numA);
+
+    printf("Digite o numero B: ");
+    scanf("%d", &numB);
+
+    int position = solution(numA, numB);
+    if (position != -1) {
+        printf("A ocorre em B na posicao: %d\n", position);
+    } else {
+        printf("A nao ocorre em B.\n");
+    }
+
+    return 0;
+}
